@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+<section class="card section-card">
+  <p class="eyebrow">Leadership</p>
+  <h1>Party Leaders</h1>
+  <p class="muted">Meet the leadership team. Admins can update names, bios, and photos from the dashboard.</p>
+</section>
+
+<section class="profile-grid">
+  <% if (!leaders.length) { %>
+    <article class="card profile-card"><h2>Leadership profiles coming soon</h2><p class="muted">The President, Vice President, Chairman, and Deputy Chair profiles have not been added yet.</p></article>
+  <% } %>
+  <% leaders.forEach(leader => { %>
+    <article class="card profile-card">
+      <% if (leader.photo_filename) { %><img src="/uploads/<%= leader.photo_filename %>" alt="<%= leader.name %>" /><% } %>
+      <p class="eyebrow"><%= leader.role %></p>
+      <h2><%= leader.name %></h2>
+      <p><%= leader.bio %></p>
+    </article>
+  <% }) %>
+</section>
+<%- include('partials/footer') %>
