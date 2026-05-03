@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+<section class="card section-card">
+  <p class="eyebrow">Candidates</p>
+  <h1>Political Candidates</h1>
+  <p class="muted">Browse candidate profiles, districts, bios, and priorities.</p>
+</section>
+
+<section class="profile-grid">
+  <% if (!candidates.length) { %>
+    <article class="card profile-card"><h2>Candidate profiles coming soon</h2><p class="muted">No candidates have been added yet.</p></article>
+  <% } %>
+  <% candidates.forEach(candidate => { %>
+    <article class="card profile-card">
+      <% if (candidate.photo_filename) { %><img src="/uploads/<%= candidate.photo_filename %>" alt="<%= candidate.name %>" /><% } %>
+      <p class="eyebrow"><%= candidate.district || 'Candidate' %></p>
+      <h2><%= candidate.name %></h2>
+      <p><%= candidate.bio %></p>
+      <% if (candidate.priorities) { %>
+        <h3>Priorities</h3>
+        <p><%= candidate.priorities %></p>
+      <% } %>
+    </article>
+  <% }) %>
+</section>
+<%- include('partials/footer') %>

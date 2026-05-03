@@ -1,0 +1,15 @@
+<%- include('partials/header') %>
+<section class="card section-card">
+  <h1>Manifesto</h1>
+  <% if (manifesto) { %>
+    <p><strong><%= manifesto.title %></strong></p>
+    <p class="muted">Uploaded: <%= new Date(manifesto.uploaded_at).toLocaleString() %></p>
+    <div class="viewer">
+      <iframe src="/uploads/<%= manifesto.filename %>" title="Manifesto viewer"></iframe>
+    </div>
+    <a class="btn" href="/uploads/<%= manifesto.filename %>" target="_blank" rel="noopener">Open manifesto</a>
+  <% } else { %>
+    <p>No manifesto has been uploaded yet.</p>
+  <% } %>
+</section>
+<%- include('partials/footer') %>

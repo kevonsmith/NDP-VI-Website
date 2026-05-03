@@ -1,0 +1,110 @@
+<%- include('partials/header') %>
+
+<section class="campaign-hero">
+  <div class="campaign-copy">
+    <p class="eyebrow">National Democratic Party</p>
+    <h1>Building a stronger future together.</h1>
+    <p class="lead">A modern campaign website for membership, news, leaders, candidates, manifesto access, and secure online contributions through Virtual Pay.</p>
+    <div class="actions">
+      <a class="btn" href="/register"><i class="fa-solid fa-user-plus"></i> Join / Renew $20 monthly</a>
+      <a class="btn secondary" href="/manifesto"><i class="fa-solid fa-file-lines"></i> Read the Manifesto</a>
+      <a class="btn ghost" href="/candidates"><i class="fa-solid fa-people-group"></i> Meet the Candidates</a>
+    </div>
+  </div>
+  <aside class="campaign-panel">
+    <img src="/assets/logo.png" alt="NDP logo" />
+    <h2>Member-powered campaign tools</h2>
+    <p>Members can register, log in, activate subscription payments, and view account status from a secure portal.</p>
+    <div class="mini-stats">
+      <span><strong>$20</strong><small>Monthly membership</small></span>
+      <span><strong>24/7</strong><small>Online portal</small></span>
+    </div>
+  </aside>
+</section>
+
+<section class="campaign-strip">
+  <a href="/leaders"><i class="fa-solid fa-landmark"></i><span>Party Leaders</span></a>
+  <a href="/candidates"><i class="fa-solid fa-id-card"></i><span>Candidates</span></a>
+  <a href="/news"><i class="fa-solid fa-newspaper"></i><span>Latest News</span></a>
+  <a href="/social"><i class="fa-solid fa-share-nodes"></i><span>Social Media</span></a>
+</section>
+
+<section class="grid-3 section-card modern-cards">
+  <article class="card feature-card">
+    <div class="feature-icon"><i class="fa-solid fa-bullhorn"></i></div>
+    <h3>Campaign Updates</h3>
+    <p>Publish official updates, announcements, statements, and community events from the admin dashboard.</p>
+    <a href="/news">Read updates →</a>
+  </article>
+  <article class="card feature-card">
+    <div class="feature-icon"><i class="fa-solid fa-users"></i></div>
+    <h3>Leadership Profiles</h3>
+    <p>Showcase the President, Vice President, Chairman, Deputy Chair, and other party leadership.</p>
+    <a href="/leaders">Meet leaders →</a>
+  </article>
+  <article class="card feature-card">
+    <div class="feature-icon"><i class="fa-solid fa-vote-yea"></i></div>
+    <h3>Candidate Pages</h3>
+    <p>Highlight candidates, districts, biographies, photos, and policy priorities in one public section.</p>
+    <a href="/candidates">View candidates →</a>
+  </article>
+</section>
+
+<section class="split-section">
+  <div class="card manifesto-card">
+    <p class="eyebrow">Manifesto</p>
+    <h2>Share the plan clearly.</h2>
+    <% if (manifesto) { %>
+      <p class="muted">The latest uploaded manifesto is available for visitors to view.</p>
+      <a class="btn" href="/manifesto"><i class="fa-solid fa-file-pdf"></i> Open Manifesto</a>
+    <% } else { %>
+      <p class="muted">No manifesto has been uploaded yet. Admin users can upload a PDF, PNG, or JPG from the dashboard.</p>
+      <a class="btn secondary" href="/admin"><i class="fa-solid fa-upload"></i> Upload from Admin</a>
+    <% } %>
+  </div>
+  <div class="card social-card-home">
+    <p class="eyebrow">Follow</p>
+    <h2>Stay connected on every platform.</h2>
+    <div class="social-icon-row">
+      <a class="social-icon facebook" href="https://www.facebook.com/NationalDemocraticParty/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a class="social-icon instagram" href="https://www.instagram.com/explore/search/keyword/?q=NDP%20BVI" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a class="social-icon x-twitter" href="https://x.com/search?q=NDP%20BVI" target="_blank" rel="noopener" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+      <a class="social-icon youtube" href="https://www.youtube.com/results?search_query=NDP+BVI" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+    <a class="link-arrow" href="/social">Open social media hub →</a>
+  </div>
+</section>
+
+<section class="card section-card news-feature">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Latest News</p>
+      <h2>What’s happening now</h2>
+    </div>
+    <a class="btn secondary" href="/news">All News</a>
+  </div>
+  <div class="news-card-grid">
+    <% if (news.length) { %>
+      <% news.forEach(post => { %>
+        <article class="news-card">
+          <span class="news-date"><%= new Date(post.published_at).toLocaleDateString() %></span>
+          <h3><a href="/news/<%= post.slug %>"><%= post.title %></a></h3>
+          <p><%= post.excerpt %></p>
+        </article>
+      <% }) %>
+    <% } else { %>
+      <p class="muted">No news has been published yet. Admin users can add articles from the dashboard.</p>
+    <% } %>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div>
+    <p class="eyebrow">Get involved</p>
+    <h2>Join the membership portal today.</h2>
+    <p>Register an account, activate your $20 monthly membership, and stay connected with campaign updates.</p>
+  </div>
+  <a class="btn light" href="/register">Become a Member</a>
+</section>
+
+<%- include('partials/footer') %>
