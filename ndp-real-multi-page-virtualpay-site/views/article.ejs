@@ -1,8 +1,0 @@
-<%- include('partials/header') %>
-<article class="card section-card article">
-  <a href="/news">← Back to News</a>
-  <h1><%= post.title %></h1>
-  <p class="muted"><%= new Date(post.published_at).toLocaleString() %></p>
-  <p><%= post.body %></p>
-</article>
-<%- include('partials/footer') %>
